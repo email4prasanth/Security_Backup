@@ -60,24 +60,6 @@ You can configure repository policies to control access to the repository at a g
 2. Select the repository and click **Permissions**.
 3. Click **Edit policy** to define new policies for the repository.
 
-#### Example policy to allow only a specific VPC:
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": "ecr:*",
-      "Resource": "*",
-      "Condition": {
-        "StringEquals": {
-          "aws:SourceVpc": "vpc-xxxxxxxx"
-        }
-      }
-    }
-  ]
-}
-```
 ## 5. Implement Logging and Monitoring
 Enable **CloudTrail** and **CloudWatch** to log and monitor all API requests made to your ECR repositories. This will help you track and audit access, as well as monitor for unusual activity.
 
