@@ -144,6 +144,4 @@ If your CloudFront distribution is serving content from a custom domain, back up
    
 This ensures that you can quickly restore DNS settings if needed.
 
----
 
-By implementing these strategies, you can create a robust backup and recovery plan for your CloudFront distribution and its related resources. Would you like to dive deeper into any specific step or need additional assistance with configuration?
