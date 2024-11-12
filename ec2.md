@@ -1,6 +1,6 @@
  <!-- I am using ec2 service i want to enhance my security how can i achieve it -->
  # Enhancing EC2 Security Using AWS Console
-
+- [AWS Documentation Security in Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security.html)
 To enhance security for your EC2 instance through the AWS Console, here are some essential steps you can take:
 
 ## 1. Use Secure Authentication and Access Controls

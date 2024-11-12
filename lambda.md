@@ -1,6 +1,6 @@
 <!-- I am using Lambda service i want to enhance my security how can i achieve it  -->
 # Enhancing AWS Lambda Security Using the AWS Console
-
+- [AWS Documentation Security in Amazon Lambda](https://docs.aws.amazon.com/lambda/latest/dg/lambda-security.html)
 ## 1. Use IAM Roles with Least Privilege
 - **Step 1**: Go to the **IAM Console** in the AWS Console.
 - **Step 2**: Create a custom IAM role with only the required permissions for your Lambda function. For instance, if your function only interacts with S3, grant it only `s3:*` actions on the necessary resources.
