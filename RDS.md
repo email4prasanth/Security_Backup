@@ -7,7 +7,19 @@ To enhance the security and backup of your RDS instance, here are some key steps
 ## 1. Enable Multi-AZ Deployment
 - [LINK](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html)
 Multi-AZ deployments automatically provide failover support to a standby instance in a different availability zone, improving availability and redundancy. This can be enabled when setting up the instance or modified afterward in the settings.
-
+### When Creating a New RDS Instance
+    - Sign in to AWS Management Console and go to the RDS service.
+    - Click on Create database.
+    - Choose your database engine (e.g., MySQL, PostgreSQL).
+    - Under Availability & Durability, select Multi-AZ deployment.
+    - Proceed with other settings and launch the instance. AWS will create a standby instance in a different AZ and manage automatic failover.
+### For an Existing RDS Instance
+    - In the RDS Console, go to Databases and select the instance you want to modify.
+    - Choose Modify from the Actions dropdown.
+    - Scroll down to Availability & Durability.
+    - Enable Multi-AZ deployment.
+    - Review the changes and apply them.
+        - If you select Apply Immediately, the instance will switch to Multi-AZ without waiting for the next maintenance window, but this may briefly impact availability.
 ## 2. Implement Enhanced Security Measures 
 - [LINK](https://aws.amazon.com/rds/features/security/)
 
