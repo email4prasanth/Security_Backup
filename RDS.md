@@ -24,10 +24,10 @@ Multi-AZ deployments automatically provide failover support to a standby instanc
 - [LINK](https://aws.amazon.com/rds/features/security/)
 
 ### **Encrypt Storage**: 
-    -  New Instances: When creating a new RDS instance, you can enable encryption under the Settings section by selecting a KMS key (either the default key or a custom KMS key).
+    - New Instances: When creating a new RDS instance, you can enable encryption under the Settings section by selecting a KMS key (either the default key or a custom KMS key).
     - Existing Instances: AWS does not support enabling encryption on an existing RDS instance. Instead, you need to create a snapshot of the instance, then create a new encrypted instance from that snapshot.
 ### **Use SSL/TLS**:
-    - For secure data transmission, download the SSL certificate from AWS for your RDS database engine (available in the RDS documentation).
+    - For secure data transmission, download the SSL certificate from AWS for your RDS database engine [LINK](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html).
     - Update your application’s database connection string to require SSL.
         - For MySQL: Use --ssl-ca to specify the CA certificate.
         - For PostgreSQL: Add sslmode=require to the connection string.
