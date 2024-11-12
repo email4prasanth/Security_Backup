@@ -1,0 +1,15 @@
+### List of services using in Hubino
+- ec2
+- Fargate
+- RDS
+- ECR
+- ECS
+- Lambda
+- Cloudwatch
+- CloudFront
+- s3
+- ACM
+- Secrets manager, 
+- System Manager, 
+- API gateway, 
+- Event bridge
