@@ -37,16 +37,9 @@ To enhance the security of your ECS service, you can follow these steps using th
    - **Data Encryption in Transit:** Configure your ECS services to use HTTPS for secure communication.
      - If you're using a load balancer, configure an SSL certificate in **ACM** (AWS Certificate Manager), and ensure that your ECS services communicate over HTTPS.
 
-## 6. Logging and Monitoring
-   - **CloudWatch Logs:**
-     - Enable **CloudWatch Logs** to capture logs from your containers.
-     - Go to **CloudWatch** > **Log groups**, create a log group, and configure your ECS task definition to send logs to this group.
-   
-   - **CloudTrail:** Enable **CloudTrail** to log API activity for ECS and other related services.
-     - Go to **CloudTrail** > **Trails** and ensure it is enabled for logging ECS API calls.
-   
-   - **CloudWatch Alarms:** Set up alarms for monitoring container health and resource usage.
-     - In **CloudWatch** > **Alarms**, create an alarm for metrics like CPU usage, memory, or task failure events.
+## 6. IAM Roles for Services
+   - Use IAM roles for ECS services to control permissions more securely and follow the principle of least privilege.
+   - Set up role-based access for managing ECS services, ensuring that only authorized users can deploy or modify services.
 
 ## 7. Task Definition Security
    - **Image Scanning:** Use **Amazon ECR** image scanning to detect vulnerabilities in container images before deploying them.
@@ -68,9 +61,7 @@ To enhance the security of your ECS service, you can follow these steps using th
    - Ensure that your ECS services are using the latest, patched container images.
    - Use **ECS Service Auto-Deployments** to automatically replace tasks when a new revision of the task definition is created.
 
-## 10. IAM Roles for Services
-   - Use IAM roles for ECS services to control permissions more securely and follow the principle of least privilege.
-   - Set up role-based access for managing ECS services, ensuring that only authorized users can deploy or modify services.
+
 
 <!-- I am using ECS service i want to enhance my backup how can i achieve it -->
 # Enhancing Backups for ECS Service
@@ -187,6 +178,16 @@ You can use AWS CloudFormation or Terraform to define and back up your entire EC
 - **CloudFormation**: Create templates for your ECS cluster, services, and other AWS resources.
 - **Terraform**: Define the ECS infrastructure and store your Terraform code in a version-controlled repository (like GitHub) for better tracking.
 
+## 7. Logging and Monitoring
+   - **CloudWatch Logs:**
+     - Enable **CloudWatch Logs** to capture logs from your containers.
+     - Go to **CloudWatch** > **Log groups**, create a log group, and configure your ECS task definition to send logs to this group.
+   
+   - **CloudTrail:** Enable **CloudTrail** to log API activity for ECS and other related services.
+     - Go to **CloudTrail** > **Trails** and ensure it is enabled for logging ECS API calls.
+   
+   - **CloudWatch Alarms:** Set up alarms for monitoring container health and resource usage.
+     - In **CloudWatch** > **Alarms**, create an alarm for metrics like CPU usage, memory, or task failure events.
 ---
 
 ## Conclusion
