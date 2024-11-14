@@ -23,14 +23,11 @@ Stack termination protection prevents the accidental deletion of critical CloudF
 When creating CloudFormation templates, use parameter validation to ensure that only valid values are used for stack parameters. This minimizes the risk of mistakes.
 - In your CloudFormation template, define parameters with constraints such as `AllowedValues`, `AllowedPattern`, or `MinLength/MaxLength`.
 
-## 5. Enable CloudTrail Logging for CloudFormation
-Enabling AWS CloudTrail logging for CloudFormation allows you to capture all CloudFormation API calls for auditing purposes.
+## 5. Monitor with AWS Config Rules
+Use **AWS Config** to monitor compliance with security best practices for resources created by CloudFormation. AWS Config can automatically check whether CloudFormation-managed resources follow your security and configuration policies.
 
-- Go to the **CloudTrail Console**.
-- Ensure CloudTrail is enabled and logging for CloudFormation API actions.
-- In the CloudTrail settings, ensure logs are being delivered to an S3 bucket and are retained for the desired amount of time.
-- You can also integrate CloudTrail with **Amazon CloudWatch** for real-time monitoring of CloudFormation events.
-
+- Go to **AWS Config** in the AWS Console.
+- Create AWS Config rules that enforce compliance for resources like EC2, RDS, S3, etc., based on CloudFormation templates.
 ## 6. Enable Encryption for Resources Managed by CloudFormation
 Ensure that the resources created or managed by CloudFormation are encrypted, such as:
 
@@ -56,11 +53,7 @@ Set up **Amazon SNS** notifications to alert you about critical CloudFormation e
 - Select your stack and navigate to the **Notifications** tab.
 - Create an SNS topic and subscribe to it with your email or other communication channels for real-time alerts on stack events.
 
-## 10. Monitor with AWS Config Rules
-Use **AWS Config** to monitor compliance with security best practices for resources created by CloudFormation. AWS Config can automatically check whether CloudFormation-managed resources follow your security and configuration policies.
 
-- Go to **AWS Config** in the AWS Console.
-- Create AWS Config rules that enforce compliance for resources like EC2, RDS, S3, etc., based on CloudFormation templates.
 
 <!-- I am using CloudFormation service i want to enhance my backup how can i achieve it -->
 
@@ -184,6 +177,14 @@ Resources:
       AllocatedStorage: 20
 
 ```
+## 6. Enable CloudTrail Logging for CloudFormation
+Enabling AWS CloudTrail logging for CloudFormation allows you to capture all CloudFormation API calls for auditing purposes.
+
+- Go to the **CloudTrail Console**.
+- Ensure CloudTrail is enabled and logging for CloudFormation API actions.
+- In the CloudTrail settings, ensure logs are being delivered to an S3 bucket and are retained for the desired amount of time.
+- You can also integrate CloudTrail with **Amazon CloudWatch** for real-time monitoring of CloudFormation events.
+
 #### Summary of Steps in the AWS Console:
     -   Navigate to AWS Backup: In the AWS Console, go to AWS Backup and create a backup vault and backup plan.
     -   Set up Resource Assignments: In the Backup Plan, select which resources (EC2, RDS, DynamoDB, etc.) to back up.

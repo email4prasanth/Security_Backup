@@ -20,11 +20,9 @@
   - Select a **VPC**, **subnet**, and **security group** to restrict network access.
 - This helps in limiting the Lambda's access to specific private resources, such as databases or EC2 instances.
 
-## 4. Monitor with CloudWatch Logs
-- **Step 1**: Go to **CloudWatch Console** and create log groups if not already set up.
-- **Step 2**: Under **Lambda Console**, navigate to your function and ensure that **CloudWatch Logs** are enabled under the **Monitoring** section.
-- This provides logging and allows you to monitor function invocations and troubleshoot errors, which is key for detecting malicious behavior or unexpected function executions.
-
+## 4. Enable Lambda Concurrent Execution Limits
+- **Step 1**: Go to **Lambda Console** and in the **Configuration** section, set a **concurrent execution limit**.
+- **Step 2**: This helps prevent abuse of Lambda functions by limiting the number of concurrent invocations, which could be useful in the case of a DDoS attack.
 ## 5. Set Function Timeout and Memory Limits
 - **Step 1**: In the **Lambda Console**, select your function and go to the **Configuration** tab.
 - **Step 2**: Set a reasonable **Timeout** to limit how long a Lambda function can run (helps in preventing long-running, malicious processes).
@@ -50,9 +48,7 @@ If your Lambda is triggered by API Gateway and exposed to the internet, consider
 - **Step 1**: Go to **WAF & Shield Console** and set up protections for your API Gateway.
 - **Step 2**: Enable rate limiting and other rules to mitigate common attacks.
 
-## 10. Enable Lambda Concurrent Execution Limits
-- **Step 1**: Go to **Lambda Console** and in the **Configuration** section, set a **concurrent execution limit**.
-- **Step 2**: This helps prevent abuse of Lambda functions by limiting the number of concurrent invocations, which could be useful in the case of a DDoS attack.
+
 
 <!-- I am using Lambda service i want to enhance my backup how can i achieve it -->
 # Enhancing AWS Lambda Backup Using AWS Console
@@ -82,44 +78,8 @@ Lambda functions automatically log to **Amazon CloudWatch**. You can retain thes
 5. Set an appropriate retention period for your Lambda logs (e.g., 30 days, 90 days, or indefinitely).
 6. For long-term storage, you can export logs to **Amazon S3** (explained below).
 
-## 3. Backup Lambda Configuration (Environment Variables, IAM Role)
-You can manually back up the Lambda function configuration, including environment variables, memory settings, timeouts, and IAM roles.
 
-### Steps to Export Lambda Configuration:
-1. Go to the **Lambda Console** and select your function.
-2. In the **Configuration** section, review settings such as environment variables, execution role, and memory configurations.
-3. Manually record or export these details for backup (AWS does not offer a direct export-to-file option).
-4. Consider using **AWS CloudFormation** to define and back up your Lambda function's configuration.
-
-## 4. Backing Up Dependencies (Layers, VPC Configuration)
-If your Lambda function uses AWS Lambda Layers or interacts with VPCs, ensure these dependencies are backed up.
-
-### Backup Lambda Layers:
-1. In the Lambda Console, navigate to the **Layers** section.
-2. Ensure that the versions of any Lambda Layers your function uses are saved or documented.
-3. For custom layers, save the layer's source code and version information.
-
-### Backup VPC and Networking Configuration:
-1. If your Lambda function is connected to a VPC, back up your VPC settings.
-2. Use **CloudFormation** or **AWS Config** to snapshot and back up your VPC configurations.
-
-## 5. Backup Lambda Function Permissions (IAM Roles and Policies)
-Lambda functions use IAM roles and policies for permissions. Backing up these permissions is essential.
-
-### Steps to Backup IAM Roles and Policies:
-1. Go to the **IAM Console**.
-2. Navigate to **Roles**, and search for the role assigned to your Lambda function.
-3. Review the policies attached to the IAM role. You can manually document or export the policies using AWS CLI/SDK.
-
-## 6. Back Up Lambda Triggers and Event Sources
-Lambda functions are often triggered by various AWS services (e.g., S3, API Gateway, DynamoDB). Ensure that you back up the configuration of these event sources.
-
-### Backup Event Source Mappings:
-1. In the **Lambda Console**, go to the **Triggers** section.
-2. Review the sources triggering your Lambda function (e.g., API Gateway, DynamoDB Streams).
-3. Manually record or use **CloudFormation** to capture event source configurations.
-
-## 7. Automate Backup Using AWS Services
+## 3. Automate Backup Using AWS Services
 Consider using **AWS Backup** or **CloudFormation** to automate Lambda backups. While AWS Backup does not directly support Lambda, you can create a backup strategy that includes:
 - CloudWatch logs retention policies.
 - AWS Config rules to track Lambda function changes.
@@ -127,7 +87,7 @@ Consider using **AWS Backup** or **CloudFormation** to automate Lambda backups. 
 
 Alternatively, use the **AWS SDK/CLI** to automate versioning Lambda functions and exporting configurations at regular intervals.
 
-## 8. Backup Lambda with CloudFormation (Optional)
+## 4. Backup Lambda with CloudFormation (Optional)
 You can manage your Lambda functions and related resources using **AWS CloudFormation**, which allows you to version and back up the configuration of your Lambda function and related resources as part of a stack.
 
 ### Steps to Use CloudFormation:
@@ -136,6 +96,6 @@ You can manage your Lambda functions and related resources using **AWS CloudForm
 3. Deploy your CloudFormation stack and use it to create a backup of your Lambda function and resources.
 4. Export the stack or store it in a version-controlled repository.
 
-## 9. Backup Lambda Artifacts
+## 5. Backup Lambda Artifacts
 If you are using CI/CD pipelines (e.g., AWS CodePipeline or GitHub Actions), consider storing the deployment artifacts (e.g., deployment package, Lambda function zip file) in an **S3** bucket for easy restoration.
 
